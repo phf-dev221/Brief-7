@@ -1,8 +1,7 @@
 @extends('layout.nav')
 @section('content')
 <div class="container">
-<form>
-  
+<form> 
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Nom</label>
     <input type="text" class="form-control" id="exampleInputPassword1" name="nom">
