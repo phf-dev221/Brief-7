@@ -1,6 +1,8 @@
 @extends('layout.nav')
 @section('content')
-<form>
+<form action="/etudiant/updateStudent-traitement" method="post">
+    @csrf
+    <input type="text" style="display:none" value="{{$etudiant->id}}">
   <div class="container">
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Nom</label>

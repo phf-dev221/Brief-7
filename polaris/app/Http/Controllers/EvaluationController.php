@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Evaluation;
 use Illuminate\Http\Request;
 
 class EvaluationController extends Controller
@@ -51,7 +52,29 @@ class EvaluationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $evaluation = Evaluation::find($id);
+        return view('evaluation.update',compact('evaluation'));
+    }
+
+    public function update_evaluation_traitement(Request $request,$id){
+
+        $request->validate([
+            'matiere'=>'required',
+            'etudiant'=>'required',
+            'note'=>'required'
+
+        ]);
+        $evaluation=Evaluation::find($request->id);
+
+        $evaluation->matiere = $request->matiere;
+        $evaluation->etudiant = $request->etudiant;
+        $evaluation->note = $request->note;
+
+
+        $evaluation->update();
+
+        return back();
+
     }
 
     /**

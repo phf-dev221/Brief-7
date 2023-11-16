@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Etudiant;
 
 class EtudiantController extends Controller
 {
@@ -50,8 +51,28 @@ class EtudiantController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        //
+    {   $etudiant = Etudiant::find($id);
+        return view('etudiants.updateStudent',compact('etudiant'));
+    }
+
+    public function update_traitement(Request $request){
+        $request->validate([
+            'nom'=>'required|max:50|string',
+            'prenom'=>'required|max:50|string',
+            'date_naissance'=>'required',
+            'classe'=>'required',
+            'sexe'=>'required'
+        ]);
+        $etudiant=Etudiant::find($request->id);
+
+        $etudiant->nom = $request->nom;
+        $etudiant->prenom = $request->prenom;
+        $etudiant->date_naissance =$request->born;
+        $etudiant->classe = $request->classe;
+        $etudiant->sexe = $request->sexe;
+        $etudiant->update();
+
+        return back();
     }
 
     /**

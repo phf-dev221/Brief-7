@@ -21,7 +21,7 @@
       <td>@mdo</td>
       <td><a href="" class="btn btn-info">Details</a>
       <a href="" class="btn btn-danger">supprimer</a>
-      <a href="" class="btn btn-secondary">Modifier</a>
+      <!-- <a href="{{'/etudiant/updateStudent/'.$etudiant->id}}" class="btn btn-secondary">Modifier</a> -->
     </td>
 
     </tr>

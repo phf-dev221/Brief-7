@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\EtudiantController;
+use App\Http\Controllers\EvaluationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,9 +24,11 @@ Route::get('/etudiant/ajouterEtudiant', function () {
 Route::get('/etudiant/liststudent', function () {
     return view('etudiants.listStudent');
 });
-Route::get('/etudiant/updateStudent', function () {
-    return view('etudiants.updateStudent');
-});
+/*route pour acceder au formulaire de modification */
+Route::get('/etudiant/updateStudent/{id}', [EtudiantController::class,'update']);
+/*route pour le traitement de la modification d'etudiant */
+Route::get('/etudiant/updateStudent-traitement', [EtudiantController::class,'update_traitement']);
+
 Route::get('/etudiant/detailStudent', function () {
     return view('etudiants.detailStudent');
 });
@@ -33,7 +37,6 @@ Route::get('/matier/addForm', function () {
     return view('matiere.addForm');
 });
 //route pour modifier evaluation
-Route::get('evaluation/update', function () {
-    return view('evaluation.update');
-});
+Route::get('/evaluation/update/{id}', [EvaluationController::class,'update']);
+Route::get('/evaluation/update-traitement', [EvaluationController::class,'update_evaluation_traitement']);
 
