@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Evaluation;
 use Illuminate\Http\Request;
 
 class EvaluationController extends Controller
@@ -59,12 +60,6 @@ class EvaluationController extends Controller
      */
     public function delete(Request $request, $id)
     {
-         // on  Récupére l'ID de l'évaluation à supprimer
-    // $evaluationId = $request->input('id');
-    // dd($evaluationId);
-    
-
-    //  on Vérifier si l'évaluation existe dans la base de données
     $evaluation = Evaluation::findOrFail($request->id);
     $evaluation->is_deleted=1;
     $evaluation->update();
