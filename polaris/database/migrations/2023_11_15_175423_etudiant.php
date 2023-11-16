@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('etudiants', function (Blueprint $table) {
+        Schema::create('etudiant', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
             $table->string('prenom');
             $table->date('date_naissance');
-            $table->string('adresse');
             $table->string('classe');
             $table->enum('sexe',['femme', 'homme']);
             $table->timestamps();

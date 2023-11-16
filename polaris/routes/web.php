@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EtudiantController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layout.nav');
 });
-Route::get('/etudiant/ajouterEtudiant', function () {
-    return view('etudiants.addForm');
-});
+Route::get('/etudiants',[EtudiantController::class,'index']);  
+
+
 Route::get('/etudiant/liststudent', function () {
     return view('etudiants.listStudent');
 });

@@ -57,8 +57,18 @@ class EvaluationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete(Request $request, $id)
     {
-        //
+         // on  Récupére l'ID de l'évaluation à supprimer
+    // $evaluationId = $request->input('id');
+    // dd($evaluationId);
+    
+
+    //  on Vérifier si l'évaluation existe dans la base de données
+    $evaluation = Evaluation::findOrFail($request->id);
+    $evaluation->is_deleted=1;
+    $evaluation->update();
+    return back();
+
     }
 }
