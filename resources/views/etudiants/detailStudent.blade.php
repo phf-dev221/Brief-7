@@ -1,14 +1,16 @@
 @extends('layout.nav')
 @section('content')
-@foreach ($
+
 <div class="container">
-  <div class="card border-primary mb-3" style="max-width: 18rem;">
-    <div class="card-header">Student</div>
+  <div class="card border-primary mb-3" style="max-width: 35rem;">
+    <div class="card-header"> Etudiant {{$etudiants->id}}</div>
     <div class="card-body text-primary">
-      <h5 class="card-title">Nom et prenom</h5>
-      <p class="card-text">date de naisance</p>
-      <p class="card-text">classe :</p>
-      <p class="card-text">sexe:</p>
+      <h5 class="card-title">Nom et prenom: {{$etudiants->nom}} {{$etudiants->prenom}}</h5>
+
+
+      <p class="card-text">date de naisance: {{$etudiants->date_naissance}} </p>
+      <p class="card-text">classe: {{$etudiants->classe}}</p>
+      <p class="card-text">sexe: {{$etudiants->sexe}}</p>
 
 
 
@@ -28,17 +30,19 @@
       </tr>
     </thead>
     <tbody>
+      @foreach ($evaluations as $evaluation)
       <tr>
-
-        <td>Mark</td>
-        <td>Otto</td>
+        <td>{{$evaluation->matiere->nom}}</td>
+        <td>{{$evaluation->note}}</td>
         <td>
+          <a href="/etudiant/evaluation/{{$evaluation->id}}/edit" class="btn btn-primary">Edit</a>
+          <a href="/etudiant/evaluation/{{$evaluation->id}}" class="btn btn-danger">Supprimer</a>
 
-          <a href="" class="btn btn-danger">supprimer</a>
-          <a href="" class="btn btn-secondary">Modifier</a>
+
         </td>
-
       </tr>
+      @endforeach
+
 
     </tbody>
   </table>
@@ -49,14 +53,15 @@
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Matière</label>
       <select class="form-select" aria-label="Default select example" name="matiere">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
+        @foreach($matieres as $matiere)
+        <option value="{{$matiere->id}}">{{$matiere->nom}}</option>
+        @endforeach
 
       </select>
     </div>
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Etudiant</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" name="etudiant" value="id de l'étudiant ici">
+      <input type="text" class="form-control" id="exampleInputEmail1" name="etudiant" value="{{$etudiants->id}}" placeholder="{{$etudiants->nom}}">
 
     </div>
     <div class="mb-3">Note</label>

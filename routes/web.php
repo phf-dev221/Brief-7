@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EtudiantController;
+use App\Http\Controllers\EvaluationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,23 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layout.nav');
-});
-Route::get('/etudian/displayForm', function () {
-    return view('etudiants.addForm');
-});
-Route::post('/etudiant/ajouterEtudiant', [EtudiantController::class, 'store']);
-Route::get('/etudiant/liststudent/', [EtudiantController::class, 'index']);
-Route::get('/etudiant/updateStudent', [EtudiantController::class, 'update']);
-Route::get('/etudiant/detailStudent/{id}', [EtudiantController::class, 'show']);
-Route::get('/etudiant/deleteStudent/{id}', [EtudiantController::class, 'show']);
 
-// route pour la matière
-Route::get('/matier/addForm', function () {
-    return view('matiere.addForm');
-});
-//route pour modifier evaluation
-Route::get('evaluation/update', function () {
-    return view('evaluation.update');
-});
+
+Route::get('/etudiant/liststudent/', [EtudiantController::class, 'index']);
+
+Route::get('/etudiant/detailStudent/{id}', [EtudiantController::class, 'show']);

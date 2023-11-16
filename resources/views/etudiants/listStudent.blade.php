@@ -15,13 +15,13 @@
     </thead>
     <tbody>
 
-      @foreachelse($allStudents as $student)
+      @forelse($allStudents as $student)
       @if(!$student->is_deleted)
       <tr>
-        <th scope="row">$student->id</th>
-        <td>$student->nom</td>
-        <td>$student->prenom</td>
-        <td>$student->classe</td>
+        <th scope="row">{{$student->id}}</th>
+        <td>{{$student->nom}}</td>
+        <td>{{$student->prenom}}</td>
+        <td>{{$student->classe}}</td>
         <td>
           <a href="/etudiant/detailStudent/{{$student->id}}'" class="btn btn-info">Details</a>
           <a href="" class="btn btn-danger">supprimer</a>
@@ -32,7 +32,7 @@
       @endif
       @empty
       aucun etudiant enregistrer
-      @endforeach
+      @endforelse
     </tbody>
   </table>
 </div>

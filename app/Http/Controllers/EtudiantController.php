@@ -39,10 +39,11 @@ class EtudiantController extends Controller
      */
     public function show(string $id)
     {
-        dd($id);
-        $etudiant = Etudiant::findOrFail($id);
-        $matiere = Matiere::all();
-        $evaluation = Evaluation::findOrFail($id);
+
+        $etudiants = Etudiant::findOrFail($id);
+        $matieres = Matiere::all();
+        $evaluations = Evaluation::where('etudiant_id', '=', $id)->get();
+
         return view('etudiants.detailStudent', compact('etudiants', 'matieres', 'evaluations'));
     }
 
